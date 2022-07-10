@@ -4,11 +4,8 @@ import * as style from '@dicebear/avatars-identicon-sprites';
 
 @Injectable()
 export class AvatarService {
-
   generateAvatar() {
-    let svg = createAvatar(style, {
-   });
-   return JSON.stringify(svg);
- }
-
+    let svg = createAvatar(style, {});
+    return JSON.stringify(svg);
+  }
 }

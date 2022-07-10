@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn
+} from 'typeorm';
 
-@Entity()
+
+@Entity('robot')
 export class Robot {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,7 +22,7 @@ export class Robot {
   is_active: boolean;
 
   @Column({ default: null })
-  avatar:string;
+  avatar: string;
 
   @CreateDateColumn()
   created_at: Date;

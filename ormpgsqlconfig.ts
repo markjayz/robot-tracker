@@ -1,4 +1,5 @@
-import { Robot } from "src/robots/entities/robot.entity";
+import { User } from "src/auth/entities/user.entity";
+import { Robot } from "src/robot/entities/robot.entity";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 
 const psqlconfig : PostgresConnectionOptions = {
@@ -8,7 +9,7 @@ const psqlconfig : PostgresConnectionOptions = {
     username: 'markjaysonlomboy',
     password: 'root',
     database: 'robot_tracker',
-    entities: [Robot],
+    entities: [Robot, User],
     synchronize: true,
 }
 
