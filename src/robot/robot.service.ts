@@ -2,15 +2,15 @@ import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRobotDto } from './dto/create-robot.dto';
 import { UpdateRobotDto } from './dto/update-robot.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RobotRepository } from './robot.respository';
 import { Robot } from './entities/robot.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class RobotService {
   constructor(
-    @InjectRepository(RobotRepository)
-    private robotRepository: RobotRepository,
-  ) {}
+    @InjectRepository(Robot)
+    private readonly robotRepository: Repository<Robot>
+  ){}
 
   /**
    * Create Robots

@@ -1,6 +1,6 @@
-import { User } from "src/auth/entities/user.entity";
-import { Robot } from "src/robot/entities/robot.entity";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
+import { Robot } from "src/robot/entities/robot.entity";
+import { User } from "src/user/entities/user.entity";
 
 const psqlconfig : PostgresConnectionOptions = {
     type: 'postgres',

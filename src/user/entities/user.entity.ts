@@ -1,4 +1,3 @@
-import { IsEmail } from '@nestjs/class-validator';
 import {
   BaseEntity,
   Column,
@@ -19,7 +18,7 @@ export class User extends BaseEntity {
   @Column()
   last_name: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
