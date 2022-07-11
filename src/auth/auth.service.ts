@@ -1,7 +1,6 @@
 import {
   BadRequestException,
   Injectable,
-  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -18,19 +17,19 @@ export class AuthService {
   ) {}
 
   /**
-   * Create User
+   * Create User from signup
    * @param any
    * @returns User
    */
-  async create(data: any): Promise<User> {
+  async create(data: any) {
     const user = await this.userRepository.save(data);
     delete user.password;
-
-    return user;
+    
+    return this._generateToken(user);
   }
 
   /**
-   * Login User and Generate token
+   * Login User and Generate access_token
    * @param data
    * @returns $token
    * @throws BadRequestException
@@ -50,6 +49,13 @@ export class AuthService {
       throw new BadRequestException('Invalid credentials');
     }
 
+    return this._generateToken(user);
+  }
+
+  /**
+   * Generate Token User
+   */
+  async _generateToken(user : any){
     const jwt = await this.jwtService.signAsync({
       id: user.id,
       email: user.email,

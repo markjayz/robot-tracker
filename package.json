@@ -27,7 +27,7 @@
     "@dicebear/avatars-male-sprites": "^4.10.3",
     "@nestjs/class-validator": "^0.13.4",
     "@nestjs/common": "^8.0.0",
-    "@nestjs/config": "^2.1.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/mapped-types": "*",

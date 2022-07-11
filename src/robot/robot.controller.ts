@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Request
 } from '@nestjs/common';
 import { RobotService } from './robot.service';
 import { CreateRobotDto } from './dto/create-robot.dto';
@@ -28,7 +29,8 @@ export class RobotController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Request() req) {
+    console.log(req);
     return this.robotService.findAll();
   }
 
