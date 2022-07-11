@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Bot Tracker API develop using [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
@@ -45,18 +45,106 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+## API ENDPOINTS
+``` User Signup``` _ * this endpoint will generate **access_token** that can be use to access endpoints_
 
-# e2e tests
-$ npm run test:e2e
+``` POST : {base_url}/api/auth/signup```
 
-# test coverage
-$ npm run test:cov
+```PAYLOAD```
+``` 
+{
+	"first_name":"Mark",
+	"last_name":"Lomboy",
+	"email" : "test@gmail.com",
+	"password": "test123"
+}
 ```
+
+``` User Login``` _* this endpoint will generate **access_token** that can be use to access endpoints_
+
+``` POST : {base_url}/api/auth/login```
+
+```PAYLOAD```
+``` 
+{
+	"email" : "test@gmail.com",
+	"password": "test123"
+}
+```
+
+
+``` Create Robot```
+
+``` POST : {base_url}/api/robot```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+
+``` SAMPLE PAYLOAD```
+``` 
+{
+	"name":"Bot 2w2qq",
+	"purpose":"Time Checker",
+	"is_active" : true
+}
+```
+
+
+``` Update Robot By ID```
+
+``` PATCH : {base_url}/api/robot/{ID}```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+
+``` SAMPLE PAYLOAD```
+``` 
+{
+	"name":"Bot 2w2qq",
+	"purpose":"Time Checker",
+	"is_active" : true
+}
+```
+
+
+``` Generate Avatar for Robot``` *This will generate svg file
+
+``` PATCH : {base_url}/api/robot/avatar```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+
+```
+```
+
+
+
+
+```** View All Robots**```
+
+``` GET : {base_url}/api/robot```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+```
+```
+
+```** View All Robot by ID**```
+
+``` GET : {base_url}/api/robot/{ID}```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+
+```
+```
+
+``` **DELETE  Robots**```
+
+``` DELETE : {base_url}/api/robot```
+
+``` HEADER : Authorization: Bearer {{access_token}}```
+```
+```
+
+
+
 
 ## Support
 
