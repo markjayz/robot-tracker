@@ -45,18 +45,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## API ENDPOINTS
 ``` User Signup``` _ * this endpoint will generate **access_token** that can be use to access endpoints_
