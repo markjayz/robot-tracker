@@ -5,7 +5,7 @@ import { Unique } from 'typeorm';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
   async signup(
@@ -19,7 +19,7 @@ export class AuthController {
       first_name,
       last_name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
   }
 
@@ -28,13 +28,11 @@ export class AuthController {
     @Body('email') email: string,
     @Body('password') password: string,
   ) {
-     const user = await this.authService.login(
-      {
-        email,
-        password
-      }
-     );
+    const user = await this.authService.login({
+      email,
+      password,
+    });
 
-     return user;
+    return user;
   }
 }

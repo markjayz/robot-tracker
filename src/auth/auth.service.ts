@@ -1,12 +1,15 @@
 import {
   BadRequestException,
+  HttpException,
   Injectable,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../user/entities/user.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
@@ -22,9 +25,20 @@ export class AuthService {
    * @returns User
    */
   async create(data: any) {
+    const userExist = await this.userRepository.findOne({
+      where:{
+        email: data.email
+      }
+    });
+
+    if (userExist) {
+      throw new UnprocessableEntityException('Email already exist.');
+    }
     const user = await this.userRepository.save(data);
     delete user.password;
-    
+
+    console.log(user);
+
     return this._generateToken(user);
   }
 

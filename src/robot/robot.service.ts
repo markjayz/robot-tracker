@@ -95,6 +95,6 @@ export class RobotService {
 
   generateAvatar() {
     let svg = createAvatar(style, {});
-    return JSON.stringify(svg);
+    return svg;
   }
 }
