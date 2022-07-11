@@ -1,9 +1,11 @@
-import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRobotDto } from './dto/create-robot.dto';
 import { UpdateRobotDto } from './dto/update-robot.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Robot } from './entities/robot.entity';
 import { Repository } from 'typeorm';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-identicon-sprites';
 
 @Injectable()
 export class RobotService {
@@ -18,7 +20,11 @@ export class RobotService {
    * @returns Robot
    */
   async create(createRobotDto: CreateRobotDto): Promise<Robot> {
-    return this.robotRepository.save(createRobotDto);
+    const payload = {
+      ...{ avatar: this.generateAvatar() },
+      ...createRobotDto,
+    };
+    return this.robotRepository.save(payload);
   }
 
   /**
@@ -85,5 +91,10 @@ export class RobotService {
     return await this.robotRepository.save(
       Object.assign(robot, updateRobotDto),
     );
+  }
+
+  generateAvatar() {
+    let svg = createAvatar(style, {});
+    return JSON.stringify(svg);
   }
 }

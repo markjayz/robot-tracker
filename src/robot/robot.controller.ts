@@ -12,7 +12,6 @@ import {
 import { RobotService } from './robot.service';
 import { CreateRobotDto } from './dto/create-robot.dto';
 import { UpdateRobotDto } from './dto/update-robot.dto';
-import { AvatarService } from './avatar.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
@@ -20,7 +19,6 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class RobotController {
   constructor(
     private readonly robotService: RobotService,
-    private readonly avatarService: AvatarService,
   ) {}
 
   @Post()
@@ -59,6 +57,6 @@ export class RobotController {
 
   @Post('avatar')
   generateAvatar() {
-    return this.avatarService.generateAvatar();
+    return this.robotService.generateAvatar();
   }
 }

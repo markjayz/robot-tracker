@@ -22,5 +22,8 @@ export class CreateRobotDto {
   created_at: Date;
 
   @IsOptional()
+  avatar: string;
+
+  @IsOptional()
   updated_at: Date;
 }

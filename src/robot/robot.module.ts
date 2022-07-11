@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { RobotService } from './robot.service';
 import { RobotController } from './robot.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AvatarService } from './avatar.service';
 import {Robot} from './entities/robot.entity';
 
 @Module({
@@ -10,6 +9,6 @@ import {Robot} from './entities/robot.entity';
     TypeOrmModule.forFeature([Robot])
   ],
   controllers: [RobotController],
-  providers: [RobotService, AvatarService],
+  providers: [RobotService],
 })
 export class RobotModule {}

@@ -3,12 +3,15 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
-  Matches,
   MaxLength,
   MinLength,
 } from '@nestjs/class-validator';
+import { PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 export class CreateUserDto {
+  @PrimaryGeneratedColumn()
+  readonly id: string;
+  
   @IsNotEmpty()
   @IsString()
   first_name: string;

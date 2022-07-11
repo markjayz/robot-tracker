@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import * as bcrypt from 'bcrypt';
+import { Unique } from 'typeorm';
 
 @Controller('auth')
 export class AuthController {
